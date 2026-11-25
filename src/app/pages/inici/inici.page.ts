@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonText } from '@ionic/angular';
+import { MenuService } from '../../services/menu.service';
+import { Restaurant } from '../../models/restaurant.model';
 
 // KATA · Sessions 1-2 (consulta la fitxa de la sessió)
 //
@@ -13,10 +15,32 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonText } from '@ionic/ang
 //
 // No toques el MenuService: la pàgina només el fa servir.
 
+
+
 @Component({
   selector: 'app-inici',
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonText],
   templateUrl: './inici.page.html',
   styleUrl: './inici.page.scss',
 })
-export class IniciPage {}
+
+export class IniciPage implements OnInit {
+
+  restaurants: Restaurant[] = []
+
+  constructor(private menuService: MenuService) {
+  }
+
+  ngOnInit(): void {
+
+    this.loadRestaurants()
+
+  }
+
+  loadRestaurants(): void { this.restaurants = this.menuService.getRestaurants() }
+
+
+
+
+
+}

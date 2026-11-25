@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonText } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonText, IonList, IonListHeader, IonLabel, IonItem } from '@ionic/angular';
 import { MenuService } from '../../services/menu.service';
 import { Restaurant } from '../../models/restaurant.model';
 
@@ -19,7 +19,7 @@ import { Restaurant } from '../../models/restaurant.model';
 
 @Component({
   selector: 'app-inici',
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonText],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonText, IonList, IonListHeader, IonLabel, IonItem],
   templateUrl: './inici.page.html',
   styleUrl: './inici.page.scss',
 })

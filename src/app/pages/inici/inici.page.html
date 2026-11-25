@@ -8,7 +8,27 @@
   <h1>Restaurants a prop</h1>
 
   <!-- KATA: ací va la cerca, el recompte, la llista i l'estat buit -->
+  @for (item of restaurants; track $index) {
+  <ion-list>
+    <ion-list-header>
+      <ion-label>{{item.nom}}</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>{{item.cuina}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{item.valoracio}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{item.tempsEntrega}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{item.imatge}}</ion-label>
+    </ion-item>
+  </ion-list>
+  }@empty {
   <ion-text color="medium">
     <p>Encara no hi ha cap restaurant a la llista.</p>
   </ion-text>
+  }
 </ion-content>

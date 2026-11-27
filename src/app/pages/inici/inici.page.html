@@ -7,6 +7,8 @@
 <ion-content class="ion-padding">
   <h1>Restaurants a prop</h1>
 
+  <ion-item>Restaurants totals: {{restaurantsTotals}}</ion-item>
+
   <!-- KATA: ací va la cerca, el recompte, la llista i l'estat buit -->
   @for (item of restaurants; track $index) {
   <ion-list>
@@ -31,4 +33,5 @@
     <p>Encara no hi ha cap restaurant a la llista.</p>
   </ion-text>
   }
+
 </ion-content>

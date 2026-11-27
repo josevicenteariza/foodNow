@@ -27,20 +27,20 @@ import { Restaurant } from '../../models/restaurant.model';
 export class IniciPage implements OnInit {
 
   restaurants: Restaurant[] = []
+  restaurantsTotals: number = 0
 
   constructor(private menuService: MenuService) {
   }
 
   ngOnInit(): void {
 
-    this.loadRestaurants()
+    this.loadRestaurants();
+    this.restaurantsTotals = this.restaurants.length;
 
   }
 
   loadRestaurants(): void { this.restaurants = this.menuService.getRestaurants() }
 
-
-
-
+  
 
 }

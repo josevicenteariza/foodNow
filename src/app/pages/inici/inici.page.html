@@ -6,12 +6,17 @@
 
 <ion-content class="ion-padding">
   <h1>Restaurants a prop</h1>
-  <ion-searchbar animated="true" placeholder="Busca Restaurants" [(ngModel)]="searchTerm" (ionInput)="searchRestaurant()">></ion-searchbar>
-  
+  <ion-searchbar animated="true" placeholder="Busca Restaurants" [(ngModel)]="searchTerm"
+    (ionInput)="searchRestaurant()"></ion-searchbar>
+  @if (restaurantsFiltrats.length == 0) {
+  <p>No hi ha cap restaurant que coindideix en "{{searchTerm}}"</p>
+  }
+
   <ion-item>Restaurants totals: {{restaurantsTotals}}</ion-item>
 
   <!-- KATA: ací va la cerca, el recompte, la llista i l'estat buit -->
   @for (item of restaurantsFiltrats; track $index) {
+
   <ion-list>
     <ion-list-header>
       <ion-label>{{item.nom}}</ion-label>

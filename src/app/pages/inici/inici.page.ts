@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonText, IonList, IonListHeader, IonLabel, IonItem } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonText, IonList, IonListHeader, IonLabel, IonItem, IonSearchbar } from '@ionic/angular';
 import { MenuService } from '../../services/menu.service';
 import { Restaurant } from '../../models/restaurant.model';
+import { FormsModule } from '@angular/forms';
 
 // KATA · Sessions 1-2 (consulta la fitxa de la sessió)
 //
@@ -19,7 +20,7 @@ import { Restaurant } from '../../models/restaurant.model';
 
 @Component({
   selector: 'app-inici',
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonText, IonList, IonListHeader, IonLabel, IonItem],
+  imports: [FormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonText, IonList, IonListHeader, IonLabel, IonItem, IonSearchbar],
   templateUrl: './inici.page.html',
   styleUrl: './inici.page.scss',
 })
@@ -27,7 +28,11 @@ import { Restaurant } from '../../models/restaurant.model';
 export class IniciPage implements OnInit {
 
   restaurants: Restaurant[] = []
+  restaurantsFiltrats: Restaurant[] = []
+
   restaurantsTotals: number = 0
+
+  searchTerm: string = ''
 
   constructor(private menuService: MenuService) {
   }
@@ -35,12 +40,22 @@ export class IniciPage implements OnInit {
   ngOnInit(): void {
 
     this.loadRestaurants();
-    this.restaurantsTotals = this.restaurants.length;
+    
+    this.restaurantsFiltrats = [...this.restaurants];
+    this.restaurantsTotals = this.restaurantsFiltrats.length;
 
   }
 
   loadRestaurants(): void { this.restaurants = this.menuService.getRestaurants() }
 
-  
+  searchRestaurant(): void {
+    const term = this.searchTerm.toLowerCase().trim();
+    if(term == '') {
+      this.restaurantsFiltrats = [...this.restaurants];
+    } else {
+      this.restaurantsFiltrats = this.restaurants.filter(restaurant => restaurant.nom.toLowerCase().includes(term) || restaurant.cuina.toLowerCase().includes(term));
+    }
+    this.restaurantsTotals = this.restaurantsFiltrats.length;
+  }
 
 }

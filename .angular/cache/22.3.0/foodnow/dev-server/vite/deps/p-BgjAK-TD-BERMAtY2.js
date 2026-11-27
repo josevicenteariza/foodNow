@@ -284,7 +284,7 @@ var b = (n) => {
 };
 var y = function() {
 	var _ref2 = _asyncToGenerator(function* (n) {
-		if (n.leavingEl && n.animated && 0 !== n.duration) return n.animationBuilder ? n.animationBuilder : "ios" === n.mode ? (yield import("./standalone-CIpo9_iL.js").then((n) => n.un)).iosTransitionAnimation : (yield import("./standalone-CIpo9_iL.js").then((n) => n.sn)).mdTransitionAnimation;
+		if (n.leavingEl && n.animated && 0 !== n.duration) return n.animationBuilder ? n.animationBuilder : "ios" === n.mode ? (yield import("./standalone-jBOTbRay.js").then((n) => n.un)).iosTransitionAnimation : (yield import("./standalone-jBOTbRay.js").then((n) => n.sn)).mdTransitionAnimation;
 	});
 	return function y(_x2) {
 		return _ref2.apply(this, arguments);
